@@ -1,7 +1,7 @@
 
 import './App.css'
 
-import NavBar from './Directory/NavBar.jsx'
+import HomePage from './Directory/HomePage'
 
 
 
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div> 
-      <NavBar/>
+      <HomePage/>
     </div>
   )
    

@@ -2,6 +2,7 @@ import { React } from "react";
 import NavBar from './NavBar'
 import { Routes, Route } from "react-router-dom"
 import NewPlayerForm from "../components/NewPlayerForm";
+import AllPlayers from "../components/allPlayers";
 
 export default function HomePage() {
     return (
@@ -11,8 +12,8 @@ export default function HomePage() {
         <h1> Welcome! </h1>
       </div>
 
-     <div> 
-      </div> 
+      
+    
       
       </>
     );

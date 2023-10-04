@@ -16,7 +16,7 @@ export async function fetchSinglePlayer(playerId){
 try{
 const response = await fetch("https://fsa-puppy-bowl.herokuapp.com/api/2306-GHP-ET-WEB-PT-SF/players/" + playerId)
 const data = await response.json();
-console.log( " fetching single player",data.data.player);
+console.log( "fetching single player",data.data.player);
 return data.data.player;
 }catch(e){
 console.error(e)

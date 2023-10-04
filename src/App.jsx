@@ -1,7 +1,8 @@
 
 import './App.css'
 
-import HomePage from './Directory/HomePage'
+
+import NavBar from './Directory/NavBar'
 import NewPlayerForm from './components/NewPlayerForm'
 import AllPlayers from './components/allPlayers'
 
@@ -12,9 +13,7 @@ function App() {
 
   return (
     <div> 
-      <HomePage/>
-      <NewPlayerForm/> 
-      <AllPlayers/>
+      <NavBar/>
     </div>
   )
    

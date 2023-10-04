@@ -9,7 +9,7 @@ export default function HomePage() {
         <> 
 
       <div className="home">
-        <h1> Welcome! </h1>
+        <h1> Welcome to Puppy Bowl</h1>
       </div>
 
       

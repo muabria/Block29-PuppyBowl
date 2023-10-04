@@ -2,59 +2,44 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 
-export default function SinglePlayer() {
-    const [individualPlayer, setIndividualPlayer] = useState(null)
-    const params = useParams()
+const SinglePlayer = () => {
+    const [singlePlayer, setSinglePlayer] = useState({});
+    const [error, setError] = useState(null);
 
-    const playerId = params.id
+    const params= useParams();
 
-    async function handleDelete() {
-        try{
-            const response = await fetch("https://fsa-puppy-bowl.herokuapp.com/api/2306-GHP-ET-WEB-PT-SF/players/" + playerId,
-            {
-                method: "DELETE",
-            })
-            const result = await response.json();
-            console.log(result);
-        }catch(e){
-            console.error(e);
+    const playerId = params.id;
+    console.log("player id", playerId);
+
+    useEffect(()=>{
+        async function singlePlayerData(playerId){
+           const singlePlayerData = await fetchSinglePlayer(playerId);
+           if( singlePlayerData instanceof Error){
+                setError(singlePlayerData)
+           }
+           console.log("from the fetch single data" ,singlePlayerData)
+           setSinglePlayer(singlePlayerData);
         }
-    }
+        fetchSinglePlayerData(playerId);
+    }, []);
 
-    useEffect(() => {
-        async function fetchSinglePlayer() {
-            try {
-                const response = await fetch(`https://fsa-puppy-bowl.herokuapp.com/api/2306-GHP-ET-WEB-PT-SF/players/${playerId}`);
-                const dataObj = await response.json();
-                const singlePlayer = (dataObj.data.player);
-                console.log(singlePlayer);
-
-                setIndividualPlayer(singlePlayer);
-
-
-            } catch (e) {
-                console.error("did not fetch single player")
-            }
-
-        }
-        fetchSinglePlayer();
-    }, []
-    )
-
-   
-    return (
-        <>
-            {individualPlayer ? (
+    return(
+        <div>
+            {error && !singlePlayer && (<p>Failed to load single player card.</p>)}
+            <div>
                 <div>
-                    <h3>Name: {individualPlayer.name}</h3>
-                    <img src={individualPlayer.imageUrl} alt={individualPlayer.name} />
-                    <p>Breed: {individualPlayer.breed}</p>
-                    <p>Status: {individualPlayer.status}</p>
-                    
-                    <button onClick={()=>{handleDelete()}}>Delete Player</button> 
+                    <img src={singlePlayer.imageUrl} alt={singlePlayer.name}></img>
+                </div>
+                <div>
+                    <h3>{singlePlayer.name}</h3>
+                    <p><b>Breed:</b> {singlePlayer.breed}</p>
+                    <p><b>Status:</b> {singlePlayer.status}</p>
 
-                </div>) : <p>loading...</p>}
-            
-        </>
-    )
+                    <button onClick={() => {handleRemove(singlePlayer.id)}}> Delete Player</button>
+                </div>
+            </div>
+        </div>
+        )
 }
+
+export default SinglePlayer;

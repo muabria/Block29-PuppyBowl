@@ -13,7 +13,7 @@ const AllPlayers = () => {
 
     useEffect(() =>{
         async function fetchPlayerData(){
-         const playerData = await fetchSinglePlayer();
+         const playerData = await fetchPlayers();
          if(playerData instanceof Error){
             setError(playerData);
          }

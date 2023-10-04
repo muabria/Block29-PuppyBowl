@@ -26,11 +26,11 @@ export default function Searchbar (){
         }
     }
     return(
-        <div className="searchTop">
-            <div className="search">
+        <div>
+            <div>
                 <input type="text" placeholder="Search Here..." onChange={e => handleFilter(e.target.value)}/>
             </div>
-            <div className="searchResult">
+            <div>
                 {data.map((data) => (
                     <div key={data.name}> 
                         {data.name}

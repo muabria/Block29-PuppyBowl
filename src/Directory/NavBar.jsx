@@ -6,11 +6,10 @@ import SearchBar from "./SearchBar";
 export default function NavBar() {
     return (
         <div id="navbar">
-            
-        <Link to="/HomePage">Home</Link>
-        <Link to="/NewPlayerForm"> New Player Form </Link>
+        
+        <Link to="/HomePage"> Home </Link>
         <SearchBar/>
-      
+        
     </div>
     );
   }
